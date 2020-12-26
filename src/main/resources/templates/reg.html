@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reg</title>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+</head>
+
+<body>
+<div class="container">
+    <form class="form-signin" method="post" th:object="${userReg}" th:action="@{/reg/save}">
+        <h2 class="form-signin-heading">Please Registration</h2>
+        <input type="hidden" class="form-control" th:field="*{userId}"/>
+        <p>
+            <label class="sr-only">Username</label>
+            <input type="text" class="form-control" th:field="*{username}"/>
+        </p>
+        <p>
+            <label class="sr-only">Email</label>
+            <input type="text" class="form-control" th:field="*{email}"/>
+        </p>
+        <p>
+            <label class="sr-only">Password</label>
+            <input type="text" class="form-control" th:field="*{password}"/>
+        </p>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Registration</button>
+    </form>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+
+</head>
+
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-xs-12 center-block text-center">
+                <h3> HOME PAGE </h3>
+
+                <br>
+                <h4> Logged in as </h4>
+                Name : <p th:text="${userDto.username}" ></p>
+                Email : <p th:text="${userDto.email}" ></p>
+
+                <a th:href="@{/user/add-status}">Add Stuatus</a>
+
+            </div>
+            <br>
+            <br>
+            <a th:href="@{/logout}">Logout</a>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

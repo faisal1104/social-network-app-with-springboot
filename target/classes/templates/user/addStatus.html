@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            <form action="#" th:action="@{/user/post-status}" th:object="${status}" method="POST" >
+                <input type="hidden" class="form-control" th:field="*{statusId}"/>
+                <br><br>
+                <i class="tm-block-title mb-4">Write your Status:</i><br>
+                <input type="text" th:field="*{statusText}"
+                       class="form-control mb-4 col-4" placeholder="Name">
+                <br>
+
+                <i class="tm-block-title mb-4">Location:</i><br>
+                <select th:field="*{location.locationId}">
+                    <option th:each="location : ${locationList}"
+                            th:value="${location.locationId}" th:text="${location.locationName}"></option>
+                </select>
+
+                <button type="submit" class="btn btn-info col-2">Save</button>
+
+            </form>
+
+            <hr>
+            <a th:href="@{/user/}">Back</a>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<!--/*@thymesVar id="employee" type=""*/-->
+
+</body>
+</html>
