@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/user")
 public class UserHomeController {
@@ -36,7 +40,8 @@ public class UserHomeController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDto userDto = new UserDto();
         BeanUtils.copyProperties(user, userDto);
-        m.addAttribute("userDto", userDto);
+        m.addAttribute("userDto", user);
+      //  System.out.println(user.getStatus());
         return "user/home";
     }
 
@@ -45,15 +50,20 @@ public class UserHomeController {
 
         model.addAttribute("status", new Status());
         model.addAttribute("locationList", locationRepository.findAll());
-//        List<String> privacyList = new ArrayList<>();
+        List<String> privacyList = new ArrayList<>();
+        privacyList.add("Public");
+        privacyList.add("Private");
+        model.addAttribute("privacyList", privacyList);
         return "user/addStatus";
     }
 
     @PostMapping("/post-status")
     public RedirectView post(@ModelAttribute("status") Status s){
-        statusRepo.save(s);
+//        statusRepo.save(s);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        user.setStatus(s);
+        List<Status> statuses =  user.getStatus();
+        System.out.println(statuses.get(0));
+//        System.out.println(user.getStatus());
         userRepository.save(user);
         return new RedirectView("/user/home");
     }

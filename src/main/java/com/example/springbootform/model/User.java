@@ -6,12 +6,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Entity
-@Table(name = "user_entity")
+@Table(name = "user_table")
 public class User implements UserDetails {
 
     @Id
@@ -25,8 +26,12 @@ public class User implements UserDetails {
     @Column
     private String email;
 
-    @OneToOne
-    private Status status;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_status",
+            joinColumns = @JoinColumn(name = "status_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<Status> status;
 
 
     public User() {
@@ -89,11 +94,11 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    public Status getStatus() {
+    public List<Status> getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(List<Status> status) {
         this.status = status;
     }
 

@@ -14,14 +14,11 @@ import javax.annotation.processing.Generated;
 public class HomeController {
 
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private StatusRepo statusRepo;
 
     @GetMapping("/")
     public String all(Model m){
-        m.addAttribute("allUser", userRepository.findAll());
-
+        m.addAttribute("allUser", statusRepo.findAllPublic());
         return "home";
     }
 

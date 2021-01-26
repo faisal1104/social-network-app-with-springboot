@@ -10,16 +10,20 @@ import javax.persistence.*;
 public class Status {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long statusId;
-
     @Column
     private String statusText;
-
     @ManyToOne
     private Location location;
-
-    private Boolean statusPrivacy = true;
+    @Column
+    private String statusPrivacy;
+//    @ManyToOne
+//    @JoinTable(
+//            name = "user_status",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "status_id"))
+//    private User user;
 
     public Status(String statusText) {
         this.statusText = statusText;

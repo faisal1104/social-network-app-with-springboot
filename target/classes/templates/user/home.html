@@ -23,6 +23,40 @@
                 Email : <p th:text="${userDto.email}" ></p>
 
                 <a th:href="@{/user/add-status}">Add Stuatus</a>
+<br>
+
+<!--                    <span th:if="${userDto.status == null}">Hi</span>-->
+<!--                    <span th:unless="${userDto.status == null} "></span>-->
+
+<!--                <div th:if="${userDto.status == null}">-->
+<!--                    <div>Add Status</div>-->
+<!--                </div>-->
+                <!-- ELSE -->
+<!--                <div  th:unless="${userDto.status == null}">-->
+<!--                    <table th:class="table">-->
+
+<!--                        <thead>-->
+<!--                        <tr bgcolor="aqua">-->
+<!--                            <td>Status ID </td>-->
+<!--                            <td>Satus</td>-->
+<!--                            <td>Location</td>-->
+
+<!--                        </tr>-->
+<!--                        </thead>-->
+
+<!--                        <tbody>-->
+
+<!--                            <tr>-->
+<!--                                <td th:text="${userDto.status.statusId}"></td>-->
+<!--                                <td th:text="${userDto.status.statusText}"></td>-->
+<!--                                <td th:text="${userDto.status.location.locationName}"></td>-->
+
+<!--                            </tr>-->
+<!--                        </tbody>-->
+
+<!--                    </table>-->
+
+<!--                </div>-->
 
             </div>
             <br>

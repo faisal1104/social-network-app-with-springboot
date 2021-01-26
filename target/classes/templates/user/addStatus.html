@@ -15,7 +15,14 @@
 
             <form action="#" th:action="@{/user/post-status}" th:object="${status}" method="POST" >
                 <input type="hidden" class="form-control" th:field="*{statusId}"/>
+                <br>
+                <i class="tm-block-title mb-4">Gender:</i><br>
+                <th:block th:each="privacy:${privacyList}" class="mb-5">
+                    <input type="radio"  th:field="*{statusPrivacy}" th:value="${privacy}">
+                    <label th:text="${privacy}"></label><br>
+                </th:block>
                 <br><br>
+
                 <i class="tm-block-title mb-4">Write your Status:</i><br>
                 <input type="text" th:field="*{statusText}"
                        class="form-control mb-4 col-4" placeholder="Name">

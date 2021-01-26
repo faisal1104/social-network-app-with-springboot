@@ -35,8 +35,8 @@ public class RegService {
         BeanUtils.copyProperties(userDto, user);
         List<Role> roleList = roleRepository.findAll();
         user.setRole(roleList.get(0));
-        System.out.println(userRepository.existsByUsername(user.getUsername()));
-        System.out.println(userRepository.existsByEmail(user.getEmail()));
+//        System.out.println(userRepository.existsByUsername(user.getUsername()));
+//        System.out.println(userRepository.existsByEmail(user.getEmail()));
         String passTemp = bCryptPasswordEncoder.encode(userDto.getPassword());
         if(( (userRepository.existsByUsername(user.getUsername())) || (userRepository.existsByEmail(user.getEmail())) )){
             throw new ResourceNotFoundException("Username and Email Alrady Exist.");

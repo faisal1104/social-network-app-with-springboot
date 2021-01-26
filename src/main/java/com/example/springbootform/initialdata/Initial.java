@@ -35,10 +35,11 @@ public class Initial implements CommandLineRunner {
                     System.out.println(role.getId());
                 });
 
-        Location l1 = new Location("Dhaka");
-        Location l2 = new Location("Ctg");
-        locationRepository.save(l1);
-        locationRepository.save(l2);
-
+        Stream.of("Kuk", "Bor", "Raj")
+                .map(Location::new)
+                .map(locationRepository::save)
+                .forEach(l -> {
+                    System.out.println(l.getLocationName());
+                });
     }
 }

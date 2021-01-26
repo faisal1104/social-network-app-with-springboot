@@ -6,8 +6,6 @@
 </head>
 <body>
 
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -18,19 +16,14 @@
 
                     <thead>
                     <tr bgcolor="aqua">
-
-
                         <td>name </td>
                         <td>Satus</td>
                         <td>Location</td>
-
-
 
                     </tr>
                     </thead>
 
                     <tbody>
-
                     <th:block th:each="user : ${allUser}">
                         <tr>
                             <td th:text="${user.username}"></td>
@@ -41,12 +34,9 @@
                     </th:block>
                     </tbody>
 
-
-
                 </table>
 
                 <a th:href="@{/reg/}">Click Here to reg</a>
-
         </div>
     </div>
 </div>
